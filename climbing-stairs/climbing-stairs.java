@@ -3,6 +3,7 @@ class Solution {
         Map<Integer, Integer> memo = new HashMap<>();
         memo.put(1, 1);
         memo.put(2, 2);
+        memo.put(3, 3);
         return climbStairs(n, memo);
     }
 
@@ -10,7 +11,10 @@ class Solution {
         if (memo.containsKey(n)) {
             return memo.get(n);
         }
-        memo.put(n, climbStairs(n - 1, memo) + climbStairs(n - 2, memo));
+        int oneStep= climbStairs(n-1,memo);
+        int twoStep= climbStairs(n-2,memo);
+        memo.put(n,oneStep+twoStep);
         return memo.get(n);
+       
     }
 }
