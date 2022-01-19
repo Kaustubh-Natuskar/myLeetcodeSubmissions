@@ -122,26 +122,26 @@ class Node
 class Tree
 {
     //Function to return list containing elements of left view of binary tree.
-     ArrayList<Integer> list =  new ArrayList<>();
+     
     ArrayList<Integer> leftView(Node root)
     {
-      
+      ArrayList<Integer> list =  new ArrayList<>();
       if(root == null)
             return list;
-      leftView(root,1);
+      leftView(root,1,list);
       return list;
     }
-    void leftView(Node root, int height){
+    void leftView(Node root, int height,ArrayList<Integer> list){
         if(root == null)
             return;
         if(list.size() < height )    
         list.add(root.data);
         
         if(root.left != null){
-            leftView(root.left,height+1);
+            leftView(root.left,height+1,list);
         }
         if(root.right != null){
-            leftView(root.right,height+1);
+            leftView(root.right,height+1,list);
         }
         
     }
