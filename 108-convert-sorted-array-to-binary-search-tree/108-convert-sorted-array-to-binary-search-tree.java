@@ -24,7 +24,7 @@ class Solution {
         if(low>high)
             return null;
         
-        int mid = low+(high-low)/2;
+        int mid = low+(high-low)/2; // TO AVOID INT OVERFLOW
         
         TreeNode root = new TreeNode(nums[mid]);
         
