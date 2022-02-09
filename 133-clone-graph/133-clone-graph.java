@@ -19,8 +19,9 @@ class Node {
 */
 
 class Solution {
+    HashMap<Integer,Node> map = new HashMap<>();
     public Node cloneGraph(Node node) {
-        if(node == null) return null;
+        /* if(node == null) return null;
           Map<Node, Node> map = new HashMap<>();
           Queue<Node> queue = new ArrayDeque<>();
  
@@ -38,6 +39,19 @@ class Solution {
         }
     }
  
-    return map.get(node);
+    return map.get(node); */ return clone(node);
+        }
+    public Node clone(Node oldNode){
+        if(oldNode == null)
+            return null;
+        if(map.containsKey(oldNode.val))
+            return map.get(oldNode.val);
+        Node newNode = new Node(oldNode.val, new ArrayList<Node>());
+        map.put(newNode.val, newNode);
+        
+        for(Node neighbor : oldNode.neighbors){
+            newNode.neighbors.add(clone(neighbor));
+        }
+        return newNode;
     }
 }
