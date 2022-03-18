@@ -40,50 +40,53 @@ class GFG {
 //User function Template for Java
 
 class Solution {
-    static boolean[] vis;
-   static boolean[] dvis;
-   boolean sol(int V,ArrayList<ArrayList<Integer>> adj){
-       vis[V]=true;
-       dvis[V]=true;
-       for(int i:adj.get(V)){
-           if(vis[i]==false){
-               if(sol(i,adj))
-                  return true;
-           }
-           else if(dvis[i]==true)
-                return true;
-       }
-       dvis[V]=false;
-       return false;
-   }
     public boolean isPossible(int N, int[][] prerequisites)
     {
         // Your Code goes here
-       vis = new boolean[N];
-       dvis = new boolean[N];
-       ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-       for(int i=0;i<N;i++){
-           adj.add(new ArrayList<>());
+        // Your Code goes here
+        int n=prerequisites.length;
+        //ArrayList<Integer> list[]= new ArrayList[N];
+         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+         for(int i=0;i<N;i++){
+           list.add(new ArrayList<>());
        }
-       for(int i=0;i<prerequisites.length;i++){
-           adj.get(prerequisites[i][0]).add(prerequisites[i][1]);
+         for(int i=0;i<prerequisites.length;i++){
+           list.get(prerequisites[i][0]).add(prerequisites[i][1]);
        }
-
-       for(int i=0;i<N;i++){
+         
+        boolean vis[]= new boolean[N];
+        boolean dfsvis[]= new boolean[N];
+        for(int i=0;i<N;i++){
            vis[i]=false;
        }
        for(int i=0;i<N;i++){
-           dvis[i]=false;
+           dfsvis[i]=false;
        }
-       //System.out.println(adj);
-       for(int i=0;i<N;i++){
-           if(vis[i]==false){
-           if(sol(i,adj))
-              return false;
-           }
-       }
-       return true;
+        //for (int i=0;i<N;i++){
+            //list[i]= new ArrayList<>();
+       // }
+       // for (int i=0;i<n;i++){
+            //list[prerequisites[i][0]].add(prerequisites[i][1]);
+        //}
+        for (int i=0;i<N;i++){
+            if (vis[i]==false){
+                if (check(i,list,vis,dfsvis))return false;
+            }
+        }
+        return true;
     }
-
+    static boolean check(int node,ArrayList<ArrayList<Integer>> list,boolean vis[],boolean dfs[]){
+        vis[node]=true;
+        dfs[node]=true;
+        for (int i:list.get(node)){
+            if (vis[i]==false){
+                if (check(i,list,vis,dfs))return true;
+            }
+            else if (dfs[i])return true;
+        }
+        dfs[node]=false;
+        return false;
+    }
+    
 }
 
