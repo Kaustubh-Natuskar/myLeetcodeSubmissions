@@ -1,9 +1,9 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-        /*List<List<Integer>> ans = new ArrayList<List<Integer>>();
-        List<Integer> prevRow, currRow = null;
-        for(int i=0; i<numsRow; ++i){
-            currRow = new ArrayList<Integer>();
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        List<Integer>  currRow,prevRow = null;
+        for(int i=0; i<numRows; ++i){
+            currRow = new ArrayList<Integer>();   //THIS IS FIRST ONE 
             for(int j=0; j<=i; j++)
                 if(j == 0 || i == j)
                     currRow.add(1);
@@ -12,10 +12,10 @@ class Solution {
             prevRow=currRow;
             ans.add(currRow);
         }
-        return ans; */
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        return ans; 
+        /*List<List<Integer>> res = new ArrayList<List<Integer>>();
 		List<Integer> row, pre = null;
-		for (int i = 0; i < numRows; i++) {
+		for (int i = 0; i < numRows; i++) {  //THIS IS SECOND ONE 
 			row = new ArrayList<Integer>();
 			for (int j = 0; j <= i; j++)
 				if (j == 0 || j == i)
@@ -25,6 +25,6 @@ class Solution {
 			pre = row;
 			res.add(row);
 		}
-		return res;
+		return res;*/
     }
 }
