@@ -2,7 +2,7 @@ class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
         List<Integer>  currRow,prevRow = null;
-        for(int i=0; i<numRows; ++i){
+        for(int i=0; i<numRows; i++){
             currRow = new ArrayList<Integer>();   //THIS IS FIRST ONE 
             for(int j=0; j<=i; j++)
                 if(j == 0 || i == j)
