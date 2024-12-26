@@ -1,37 +1,44 @@
 class Solution {
     public int[] productExceptSelf(int[] nums) {
-        int numsLength = nums.length;
-        int productOfArray[] = new int[numsLength];
-        if(numsLength == 0){
-            return productOfArray;
+        /*
+        int[] res = new int[nums.length];
+        for(int i=0; i<nums.length; i++){
+            int skip=i, ans=1;
+            for(int j=0; j<nums.length; j++){
+                if(j == skip) continue;
+                ans = ans * nums[j];
+            }
+            res[skip] = ans;
         }
+        return res; //TLE
+        */
+        int[] suf = new int[nums.length];
+        int[] pre = new int[nums.length];
+        int[] res = new int[nums.length];
+        Arrays.fill(suf, 1);
+        Arrays.fill(pre, 1);
 
-        int prefixProducts[] = new int[numsLength];
-        int sufixProducts[] = new int[numsLength];
-        calculatePrefixProducts(prefixProducts, nums);
-        calculateSufixProducts(sufixProducts, nums);
-
-
-        for(int iterator = 0; iterator <= numsLength-1; iterator++){
-            int sufixProduct, prefixProduct;
-            prefixProduct = iterator == 0 ? 1 : prefixProducts[iterator-1];
-            sufixProduct = iterator == numsLength-1 ? 1 : sufixProducts[iterator+1];
-
-            productOfArray[iterator] = prefixProduct * sufixProduct;
+        int prod = 1;
+        for(int i=0; i<nums.length; i++){
+            prod = nums[i] * prod;
+            pre[i] = prod;
         }
-
-        return productOfArray;
-    }
-    public void calculatePrefixProducts(int[] array, int[] nums){
-        array[0] = nums[0];
-        for(int iterator = 1; iterator <= nums.length-1; iterator++){
-            array[iterator] = array[iterator-1] * nums[iterator];
+        prod = 1;
+        for(int i=nums.length-1; i>=0; i--){
+            prod = nums[i] * prod;
+            suf[i] = prod;
         }
-    }
-    public void calculateSufixProducts(int[] array, int[] nums){
-        array[nums.length - 1] = nums[nums.length - 1];
-        for(int iterator = nums.length-2; iterator >= 0; iterator--){
-            array[iterator] = array[iterator+1] * nums[iterator];
+        for(int i=0; i<nums.length; i++){
+            if(i == 0){
+                res[i] = suf[i+1];
+                continue;
+            }
+            if(i == nums.length-1){
+                res[i] = pre[i-1];
+                continue;
+            }
+            res[i] = suf[i+1] * pre[i-1];
         }
+        return res;
     }
 }
