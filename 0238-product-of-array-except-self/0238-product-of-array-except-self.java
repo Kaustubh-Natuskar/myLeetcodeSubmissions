@@ -10,7 +10,7 @@ class Solution {
             }
             res[skip] = ans;
         }
-        return res; //TLE
+        return res; //TLE //O(N^2)
         */
         int[] suf = new int[nums.length];
         int[] pre = new int[nums.length];
@@ -40,5 +40,9 @@ class Solution {
             res[i] = suf[i+1] * pre[i-1];
         }
         return res;
+        /**
+        Time: O(N)
+        Space: O(N)
+         */
     }
 }
