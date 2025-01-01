@@ -131,3 +131,15 @@ This repository contains solutions to problems I solved on LeetCode &amp; GeeksF
 
 _Each solutions added from 7 January 2022 conatins Notes.md, wherein I've wrote some important notes._  
 
+
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Stack
+|  |
+| ------- |
+| [0155-min-stack](https://github.com/Kaustubh-Natuskar/myLeetcodeSubmissions/tree/master/0155-min-stack) |
+## Design
+|  |
+| ------- |
+| [0155-min-stack](https://github.com/Kaustubh-Natuskar/myLeetcodeSubmissions/tree/master/0155-min-stack) |
+<!---LeetCode Topics End-->
