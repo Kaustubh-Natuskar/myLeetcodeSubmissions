@@ -10,6 +10,8 @@ class Solution {
                 count++;
             }
             maxLength = Math.max(maxLength, count);
+            if(maxLength == s.length())
+                return maxLength;
         }
         return maxLength; 
     }
